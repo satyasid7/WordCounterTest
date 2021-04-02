@@ -1,0 +1,26 @@
+server:
+  port: 9123
+  servlet:
+    context-path: "/WordCounter"
+  error:
+    includeStacktrace: always
+    whitelabel:
+      enabled: false
+management:
+  server:
+    port: 9101
+  servlet:
+    context-path: "/actuator"
+
+debug: false
+
+logging:
+  file: ${LOG_PATH:../logs}/${spring.application.name}.log
+  level:
+    org.hibernate.SQL: INFO
+    com.ssid: DEBUG
+    org.apache.commons: INFO
+
+spring:
+  application:
+    name: ${spring.config.name:WordCounter}
