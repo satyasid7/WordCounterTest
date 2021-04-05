@@ -24,6 +24,25 @@ public class WordCounterServiceImplTest {
 
     @Test
     public void wordCount() {
+        wordCounterService.add("flower");
+        wordCounterService.add("flor");
+        wordCounterService.add("blume");
+
         Assertions.assertEquals(3, wordCounterService.wordCount("flower"));
+        Assertions.assertEquals(3, wordCounterService.wordCount("flor"));
+        Assertions.assertEquals(3, wordCounterService.wordCount("blume"));
+        Assertions.assertEquals(3, wordCounterService.wordCount("fleur"));
+    }
+    @Test
+    public void wordCount_NullTest() {
+        Assertions.assertEquals(0, wordCounterService.wordCount("flower"));
+    }
+    @Test
+    public void wordCount_NullTest2() {
+        Assertions.assertEquals(0, wordCounterService.wordCount(""));
+    }
+    @Test
+    public void wordCount_NullTest3() {
+        Assertions.assertEquals(0, wordCounterService.wordCount(null));
     }
 }

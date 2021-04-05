@@ -26,5 +26,6 @@ class TranslateServiceImplTest {
         assertEquals("tree", translatorService.translate("arbre"));
         assertEquals("tree", translatorService.translate("baum"));
         assertNull(translatorService.translate("blahblah"));
+        assertNull(translatorService.translate(null));
     }
 }

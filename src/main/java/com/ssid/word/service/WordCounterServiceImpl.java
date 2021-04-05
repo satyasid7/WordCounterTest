@@ -10,7 +10,7 @@ import java.util.Map;
 @Service
 @RequiredArgsConstructor
 public class WordCounterServiceImpl implements WordCounterService {
-    private static Map<String, Integer> wordCounterMap = new HashMap<>();
+    private Map<String, Integer> wordCounterMap = new HashMap<>();
     @Autowired
     private final TranslatorService translatorService;
 
@@ -26,8 +26,11 @@ public class WordCounterServiceImpl implements WordCounterService {
 
     @Override
     public int wordCount(String word) {
-        return wordCounterMap.get(translatorService.translate(word));
+        String translate = translatorService.translate(word);
+        if (translate == null || !wordCounterMap.containsKey(translate)) {
+            return 0;
+        } else {
+            return wordCounterMap.get(translate);
+        }
     }
-
-
 }
